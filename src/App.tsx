@@ -3,29 +3,44 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-import React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
 
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import './App.css';
 
-function App() {
+
+const App = () => {
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    axios
+      .post("https://test-nodejs-ozzd3ccvdq-uw.a.run.app/chat", { prompt })
+      .then((res) => {
+        // Update the response state with the server's response
+        setResponse(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <div>
-          <TextField id="Question" multiline={true} />
-        </div>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <p>{response}</p>
       </header>
     </div>
   );
