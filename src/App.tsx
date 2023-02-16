@@ -26,6 +26,7 @@ const App = () => {
       .catch((err) => {
         console.error(err);
       });
+    //setResponse("My answer is long enough to show up");
   }
 
 
@@ -34,16 +35,22 @@ const App = () => {
       <header className="App-header">
         <img src="whyer.png" alt="Welcome to WHYer" />
       </header>
-      <div>
-       <form onSubmit={handleSubmit}>
-          <input
+      <div className="App-body">
+       <form className="App-form" onSubmit={handleSubmit}>
+        <label className="label-text-input" htmlFor="text-input">Ask your question here:</label>
+        <div className="text-field-input">
+          <TextField
+            fullWidth={true}
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
           />
-          <button type="submit">Submit</button>
+        </div>
+        <Button type="submit" size="large" variant="contained">Submit</Button>
         </form>
-        <p>{response}</p>
+        <div className="result-text-container">
+          <p>{response}</p>
+        </div>
       </div>
     </div>
   );
