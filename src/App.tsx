@@ -32,7 +32,10 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <form onSubmit={handleSubmit}>
+        <img src="whyer.png" alt="Welcome to WHYer" />
+      </header>
+      <div>
+       <form onSubmit={handleSubmit}>
           <input
             type="text"
             value={prompt}
@@ -41,7 +44,7 @@ const App = () => {
           <button type="submit">Submit</button>
         </form>
         <p>{response}</p>
-      </header>
+      </div>
     </div>
   );
 }
