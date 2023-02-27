@@ -17,16 +17,16 @@ const App = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    axios
-      .post("https://test-nodejs-ozzd3ccvdq-uw.a.run.app/chat", { prompt })
-      .then((res) => {
-        // Update the response state with the server's response
-        setResponse(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    //setResponse("My answer is long enough to show up");
+    // axios
+    //   .post("https://test-nodejs-ozzd3ccvdq-uw.a.run.app/chat", { prompt })
+    //   .then((res) => {
+    //     // Update the response state with the server's response
+    //     setResponse(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+    setResponse("My answer is long enough to show up. My answer is long enough to show up. My answer is long enough to show up. My answer is long enough to show up. My answer is long enough to show up.");
   }
 
 

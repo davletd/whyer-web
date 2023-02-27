@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Whyer - Learning Companion For Kids</string>
+    <string name="title_activity_main">Whyer - Learning Companion For Kids</string>
+    <string name="package_name">com.whyer.app</string>
+    <string name="custom_url_scheme">com.whyer.app</string>
+</resources>
