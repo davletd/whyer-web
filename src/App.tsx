@@ -8,10 +8,12 @@ import axios from "axios";
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import './App.css';
+import './App.scss';
+import WelcomePage from './pages/WelcomePage';
 
 
 const App = () => {
+  const [seenWelcomePage, setSeenWelcomePage] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
 
@@ -27,6 +29,10 @@ const App = () => {
     //     console.error(err);
     //   });
     setResponse("My answer is long enough to show up. My answer is long enough to show up. My answer is long enough to show up. My answer is long enough to show up. My answer is long enough to show up.");
+  }
+
+  if (!seenWelcomePage) {
+    return <WelcomePage />
   }
 
 
