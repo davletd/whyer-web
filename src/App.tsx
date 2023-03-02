@@ -3,6 +3,24 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/react/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+import '@ionic/react/css/normalize.css';
+import '@ionic/react/css/structure.css'; // Remove if nothing is visible
+import '@ionic/react/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+import '@ionic/react/css/padding.css';
+import '@ionic/react/css/float-elements.css';
+import '@ionic/react/css/text-alignment.css';
+import '@ionic/react/css/text-transformation.css';
+import '@ionic/react/css/flex-utils.css';
+import '@ionic/react/css/display.css';
+import { setupIonicReact } from '@ionic/react';
+
+
 import React, { useState } from 'react';
 import axios from "axios";
 
@@ -11,6 +29,7 @@ import Button from '@mui/material/Button';
 import './App.scss';
 import WelcomePage from './pages/WelcomePage';
 
+setupIonicReact();
 
 const App = () => {
   const [seenWelcomePage, setSeenWelcomePage] = useState(false);
@@ -32,7 +51,7 @@ const App = () => {
   }
 
   if (!seenWelcomePage) {
-    return <WelcomePage />
+    return <WelcomePage setSeenWelcomePage={setSeenWelcomePage} />
   }
 
 
