@@ -28,11 +28,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './App.scss';
 import WelcomePage from './pages/WelcomePage';
+import HowOldAreYouPage from './pages/HowOldAreYouPage';
 
 setupIonicReact();
 
 const App = () => {
   const [seenWelcomePage, setSeenWelcomePage] = useState(false);
+  const [confirmAge, setConfirmAge] = useState(false);
+  const [yourAge, setYourAge] = useState(0);
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
 
@@ -52,6 +55,10 @@ const App = () => {
 
   if (!seenWelcomePage) {
     return <WelcomePage setSeenWelcomePage={setSeenWelcomePage} />
+  }
+
+  if (!confirmAge) {
+    return <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} />
   }
 
 
