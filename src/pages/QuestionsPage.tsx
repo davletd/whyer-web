@@ -9,16 +9,15 @@ const QuestionsPage = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // axios
-    //   .post("https://test-nodejs-ozzd3ccvdq-uw.a.run.app/chat", { prompt })
-    //   .then((res) => {
-    //     // Update the response state with the server's response
-    //     setResponse(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-    setResponse(prompt);
+    axios
+      .post("https://us-central1-whyer-core.cloudfunctions.net/app/chat", { prompt })
+      .then((res) => {
+        // Update the response state with the server's response
+        setResponse(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
 
