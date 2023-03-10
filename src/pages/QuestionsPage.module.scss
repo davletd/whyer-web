@@ -1,0 +1,32 @@
+@import '../palette.scss';
+
+.Header {
+  background-color: #282c34;
+  min-height: 20vh;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  width: 100%;
+}
+
+.SpeechBubble {
+	position: relative;
+	background: $rosy-brown;
+	border-radius: .4em;
+	padding: 20px;
+	margin: 20px;
+}
+
+.SpeechBubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: $rosy-brown;
+	border-left: 0;
+	border-top: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}

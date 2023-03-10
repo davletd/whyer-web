@@ -44,7 +44,7 @@ const App = () => {
   }
 
 
-  return <QuestionsPage />;
+  return <QuestionsPage yourAge={yourAge} />;
 }
 
 export default App;
