@@ -11,33 +11,35 @@ const QuestionsPage = (props: any) => {
 
   const handleSubmit = async (e: any) => {
 
-		const updatedPrompt = `I am ${yourAge} year old. Give me friendly but detailed answer to the question: "${prompt}. If it concerns sexuality, violence or other dangerous topics, please ask them to refer to their parents or teachers for this question"`;
+		const updatedPrompt = `I am ${yourAge} year old. Give me friendly but detailed answer to the question: "${prompt} in the language of question. 
+		If it concerns sexuality, violence or other dangerous topics, please ask them to refer to their parents or teachers for this question.
+		If it is a math question, or you asked to write essay explain how it works"`;
 		console.log(prompt);
 		console.log(updatedPrompt);
     e.preventDefault();
-    axios
-      .post("https://us-central1-whyer-core.cloudfunctions.net/app/chat", { prompt: updatedPrompt  })
-			//.post("http://localhost:5001/whyer-core/us-central1/app/chat", { prompt: updatedPrompt })
-      .then((res) => {
-        // Update the response state with the server's response
-        setResponse(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-		// setResponse("Give me some text");
+    // axios
+    //   .post("https://us-central1-whyer-core.cloudfunctions.net/app/chat", { prompt: updatedPrompt  })
+		// 	//.post("http://localhost:5001/whyer-core/us-central1/app/chat", { prompt: updatedPrompt })
+    //   .then((res) => {
+    //     // Update the response state with the server's response
+    //     setResponse(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+		setResponse("Give me some text");
   }
 
 
 	return (
-		<div className="App">
+		<div>
 		<header className={styles.Header}>
 			<img src="Nesh.png" alt="Welcome to WHYer" />
-			<div className={styles.SpeechBubble}>{"Ask me about what is the sun"}</div>
+			<div className={styles.SpeechBubble}>{"Ask me about what is the sun or what is 2+2, I can help check your homework as well."}</div>
 		</header>
-		<div className="App-body">
-		 <form className="App-form" onSubmit={handleSubmit}>
-			<div className="text-field-input">
+		<div className={styles.Container}>
+		 <form className={styles.Form} onSubmit={handleSubmit}>
+			<div className={styles.TextFieldInput}>
 			<IonItem>
 				<IonTextarea
 					placeholder="Type something here"
@@ -50,7 +52,7 @@ const QuestionsPage = (props: any) => {
 			</div>
 			<IonButton type="submit" size="large">Ask</IonButton>
 			</form>
-			<div className="result-text-container">
+			<div className={styles.ResultText}>
 				<p>{response}</p>
 			</div>
 		</div>

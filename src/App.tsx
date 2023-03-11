@@ -23,10 +23,11 @@ import { setupIonicReact } from '@ionic/react';
 import React, { useState } from 'react';
 import axios from "axios";
 
-import './App.scss';
+
 import WelcomePage from './pages/WelcomePage';
 import HowOldAreYouPage from './pages/HowOldAreYouPage';
 import QuestionsPage from './pages/QuestionsPage';
+import styles from './App.module.scss';
 
 setupIonicReact();
 
@@ -35,16 +36,14 @@ const App = () => {
   const [confirmAge, setConfirmAge] = useState(false);
   const [yourAge, setYourAge] = useState(0);
  
-  if (!seenWelcomePage) {
-    return <WelcomePage setSeenWelcomePage={setSeenWelcomePage} />
+  return (
+    <div className={styles.App}>
+      <div className={styles.Content}>
+        {!seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
+        : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
+        : <QuestionsPage yourAge={yourAge} /> }
+      </div>
+    </div>);
   }
-
-  if (!confirmAge) {
-    return <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} />
-  }
-
-
-  return <QuestionsPage yourAge={yourAge} />;
-}
 
 export default App;
