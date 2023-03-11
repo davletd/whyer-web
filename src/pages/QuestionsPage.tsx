@@ -34,7 +34,7 @@ const QuestionsPage = (props: any) => {
 	return (
 		<div>
 		<header className={styles.Header}>
-			<img src="Nesh.png" alt="Welcome to WHYer" />
+			<img className={styles.Image} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{"Ask me about what is the sun or what is 2+2, I can help check your homework as well."}</div>
 		</header>
 		<div className={styles.Container}>
