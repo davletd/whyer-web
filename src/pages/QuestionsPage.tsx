@@ -27,14 +27,16 @@ const QuestionsPage = (props: any) => {
     //   .catch((err) => {
     //     console.error(err);
     //   });
-		setResponse("Give me some text");
+		setResponse(`I am ${yourAge} year old. Give me friendly but detailed answer to the question: "${prompt} in the language of question. 
+		If it concerns sexuality, violence or other dangerous topics, please ask them to refer to their parents or teachers for this question.
+		If it is a math question, or you asked to write essay explain how it works"`);
   }
 
 
 	return (
 		<div>
 		<header className={styles.Header}>
-			<img className={styles.Image} src="Nesh.png" alt="Welcome to WHYer" />
+			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{"Ask me about what is the sun or what is 2+2, I can help check your homework as well."}</div>
 		</header>
 		<div className={styles.Container}>
@@ -53,7 +55,9 @@ const QuestionsPage = (props: any) => {
 			<IonButton type="submit" size="large">Ask</IonButton>
 			</form>
 			<div className={styles.ResultText}>
-				<p>{response}</p>
+				<img className={styles.ImageSmall} src="Nesh.png" alt="Welcome to WHYer" />
+				<div className={styles.SpeechBubbleBody}>{response}</div>
+				<div className={styles.SpeechBubbleQuestions}>{prompt}</div>
 			</div>
 		</div>
 	</div>
