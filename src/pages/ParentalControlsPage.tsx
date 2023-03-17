@@ -9,7 +9,15 @@ const ParentalControlsPage = (props: any) => {
 	With time you will be able to supplement your own answers in Whyer, but for now we will ask your children
 	consult with you if they want to talk about some of the topics below`;
   
-	const { setSeenParentalControlsPage } = props;
+	const { 
+		setSeenParentalControlsPage, 
+		religionTopic, 
+		discriminationTopic, 
+		otherTopic, 
+		setReligionTopic, 
+		setDiscriminationTopic, 
+		setOtherTopic } = props;
+
 
 	return (
 		<IonPage>
@@ -27,15 +35,15 @@ const ParentalControlsPage = (props: any) => {
       </IonItem>
       <IonItem>
         <IonLabel>Religion and spirituality</IonLabel>
-        <IonToggle slot="end"></IonToggle>
+        <IonToggle slot="end" checked={religionTopic} onIonChange={(e) => setReligionTopic(e.detail.checked)}></IonToggle>
       </IonItem>
       <IonItem>
         <IonLabel>Race, Gender and discrimination</IonLabel>
-        <IonToggle slot="end"></IonToggle>
+        <IonToggle slot="end" checked={discriminationTopic} onIonChange={(e) => setDiscriminationTopic(e.detail.checked)}></IonToggle>
       </IonItem>
       <IonItem>
         <IonLabel>Other:</IonLabel>
-        <IonToggle slot="end"></IonToggle>
+        <IonToggle slot="end" checked={otherTopic} onIonChange={(e) =>setOtherTopic(e.detail.checked)}></IonToggle>
       </IonItem>
 
     </IonList>

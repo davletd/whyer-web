@@ -5,7 +5,7 @@ import styles from './QuestionsPage.module.scss';
 
 const QuestionsPage = (props: any) => {
 
-	const yourAge = props.yourAge;
+	const { yourAge, religionTopic, discriminationTopic, otherTopic } = props;
 	const [prompt, setPrompt] = useState("");
 	const [response, setResponse] = useState([{question: "", answer: ""}]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -13,12 +13,13 @@ const QuestionsPage = (props: any) => {
 	const WhyerTextDefault = "Ask me about what is the sun or what is 2+2, I can help check your homework as well.";
 	const WhyerTextLoading = "Great question! Let me think about it for a while...";
 	const WhyerText = isLoading ? WhyerTextLoading : WhyerTextDefault;
+	const religionTopicText = religionTopic ? ", religion" : "";
+	const discriminationTopicText = discriminationTopic ? ", race, gender, discrimination" : "";
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 		setIsLoading(true);
-		const updatedPrompt = `I am ${yourAge} year old. Give me friendly but detailed answer to the question: "${prompt} in the language of question. 
-		If it concerns sexuality, human reproduction, violence or other dangerous topics, refer to their parents or teachers for this question."`;
+		const updatedPrompt = `I am ${yourAge} year old. Give me friendly but detailed answer to the question: "${prompt}" in the language of question. If question is about sexuality, human reproduction, violence${religionTopicText}${discriminationTopicText} or similar topics in any way, do not give me the answer to the question and tell me instead to ask my parents or teachers to answer to this question."`;
 		console.log(prompt);
 		console.log(updatedPrompt);
     axios

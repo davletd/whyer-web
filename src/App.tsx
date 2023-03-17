@@ -37,14 +37,30 @@ const App = () => {
   const [confirmAge, setConfirmAge] = useState(false);
   const [seenParentalControlsPage, setSeenParentalControlsPage] = useState(false);
   const [yourAge, setYourAge] = useState(0);
+  const [religionTopic, setReligionTopic] = useState(false);
+  const [discriminationTopic, setDiscriminationTopic] = useState(false);
+  const [otherTopic, setOtherTopic] = useState(false);
+  const [otherTopicText, setOtherTopicText] = useState("");
  
   return (
     <div className={styles.App}>
       <div className={styles.Content}>
         {!seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
         : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
-        : !seenParentalControlsPage? <ParentalControlsPage setSeenParentalControlsPage={setSeenParentalControlsPage} /> 
-        : <QuestionsPage yourAge={yourAge} /> }
+        : !seenParentalControlsPage? 
+          <ParentalControlsPage 
+            setSeenParentalControlsPage={setSeenParentalControlsPage} 
+            religionTopic={religionTopic}
+            discriminationTopic={discriminationTopic}
+            otherTopic={otherTopic}
+            setReligionTopic={setReligionTopic}
+            setDiscriminationTopic={setDiscriminationTopic}
+            setOtherTopic={setOtherTopic} /> 
+        : <QuestionsPage 
+            yourAge={yourAge} 
+            religionTopic={religionTopic} 
+            discriminationTopic={discriminationTopic}
+            otherTopic={otherTopic} /> }
       </div>
     </div>);
   }
