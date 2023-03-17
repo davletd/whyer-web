@@ -26,6 +26,7 @@ import axios from "axios";
 
 import WelcomePage from './pages/WelcomePage';
 import HowOldAreYouPage from './pages/HowOldAreYouPage';
+import ParentalControlsPage from './pages/ParentalControlsPage';
 import QuestionsPage from './pages/QuestionsPage';
 import styles from './App.module.scss';
 
@@ -34,6 +35,7 @@ setupIonicReact();
 const App = () => {
   const [seenWelcomePage, setSeenWelcomePage] = useState(false);
   const [confirmAge, setConfirmAge] = useState(false);
+  const [seenParentalControlsPage, setSeenParentalControlsPage] = useState(false);
   const [yourAge, setYourAge] = useState(0);
  
   return (
@@ -41,6 +43,7 @@ const App = () => {
       <div className={styles.Content}>
         {!seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
         : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
+        : !seenParentalControlsPage? <ParentalControlsPage setSeenParentalControlsPage={setSeenParentalControlsPage} /> 
         : <QuestionsPage yourAge={yourAge} /> }
       </div>
     </div>);

@@ -10,14 +10,11 @@ const WelcomePage = (props: any) => {
 
 	return (
 		<React.Fragment>
-
-		
-		<div className={styles.Body}>
-			<div className={styles.Image}><img src="Nesh.png" alt="Welcome to WHYer" /></div>
-			<div className={styles.SpeechBubble}>{welcomeText}</div>
-			<IonButton className={styles.Button} onClick={() => props.setSeenWelcomePage(true)}>Continue</IonButton>
-		</div>
-		
+			<div className={styles.Body}>
+				<div className={styles.Image}><img src="Nesh.png" alt="Welcome to WHYer" /></div>
+				<div className={styles.SpeechBubble}>{welcomeText}</div>
+				<IonButton className={styles.Button} onClick={() => props.setSeenWelcomePage(true)}>Continue</IonButton>
+			</div>
 		</React.Fragment>
 	)
 }
