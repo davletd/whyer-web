@@ -47,6 +47,7 @@ const ParentalControlsPage = (props: any) => {
 			</IonList>
 			<br></br>
 			<IonButton onClick={() => setSeenParentalControlsPage(true)}>Continue</IonButton>
+			<br></br>
 		</div>
 	)
 }
