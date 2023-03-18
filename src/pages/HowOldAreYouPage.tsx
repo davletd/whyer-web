@@ -10,9 +10,6 @@ const HowOldAreYouPage = (props: any) => {
 	const { yourAge, setYourAge, setConfirmAge } = props;
 
 	return (
-		<IonPage>
-
-		
 		<div className={styles.Body}>
 			<div className={styles.Image}><img src="Nesh.png" alt="Welcome to WHYer" /></div>
 			<div className={styles.SpeechBubble}>{welcomeText}</div>
@@ -35,10 +32,9 @@ const HowOldAreYouPage = (props: any) => {
 					</IonSelect>
 				</IonItem>
 			</IonList>
+			<br></br>
 			<IonButton disabled={!yourAge} className={styles.Button} onClick={() => setConfirmAge(true)}>Continue</IonButton>
 		</div>
-		
-		</IonPage>
 	)
 }
 export default HowOldAreYouPage;

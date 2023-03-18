@@ -39,7 +39,7 @@ const QuestionsPage = (props: any) => {
 
 
 	return (
-		<div>
+		<div className={styles.Body}>
 		<header className={styles.Header}>
 			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{WhyerText}</div>
