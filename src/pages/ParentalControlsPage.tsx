@@ -40,10 +40,6 @@ const ParentalControlsPage = (props: any) => {
 					<IonLabel>Race, Gender and discrimination</IonLabel>
 					<IonToggle slot="end" checked={discriminationTopic} onIonChange={(e) => setDiscriminationTopic(e.detail.checked)}></IonToggle>
 				</IonItem>
-				<IonItem>
-					<IonLabel>Other:</IonLabel>
-					<IonToggle slot="end" checked={otherTopic} onIonChange={(e) =>setOtherTopic(e.detail.checked)}></IonToggle>
-				</IonItem>
 			</IonList>
 			<br></br>
 			<IonButton onClick={() => setSeenParentalControlsPage(true)}>Continue</IonButton>

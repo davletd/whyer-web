@@ -16,19 +16,23 @@
 .Form {
   background-color: $antique-white;
   padding: 20px;
+	border-radius: 2em;
 }
 
 .TextFieldInput {
   font-size: 16px;
   padding: 10px;
+	border-radius: 2em;
 }
 
 .ResultText {
   flex: 1;
   background-color: #E6E6FA;
   font-size: 20px;
+	margin-top: 20px;
   margin-bottom: 10px;
   width: 100%;
+	border-radius: 2em;
 }
 
 .ImageSmall {
@@ -37,7 +41,7 @@
 }
 
 .Header {
-  background-color: $outer-space;
+  background-color: $periwinkle;
   min-height: 20vh;
   display: flex;
   font-size: calc(10px + 2vmin);
