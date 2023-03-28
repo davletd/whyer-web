@@ -5,7 +5,7 @@ import styles from './QuestionsPage.module.scss';
 
 const QuestionsPage = (props: any) => {
 
-	const { yourAge, religionTopic, discriminationTopic, otherTopic } = props;
+	const { yourAge, religionTopic, discriminationTopic, otherTopic, isAuthenticated } = props;
 	const [prompt, setPrompt] = useState("");
 	const [response, setResponse] = useState([{question: "", answer: ""}]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +43,7 @@ const QuestionsPage = (props: any) => {
 		<header className={styles.Header}>
 			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{WhyerText}</div>
+			<div> {isAuthenticated ? "You are authenticated" : "You are not authenticated"}</div>
 		</header>
 		<div className={styles.Container}>
 		 <form className={styles.Form} onSubmit={handleSubmit}>

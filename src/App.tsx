@@ -29,6 +29,7 @@ import HowOldAreYouPage from './pages/HowOldAreYouPage';
 import ParentalControlsPage from './pages/ParentalControlsPage';
 import QuestionsPage from './pages/QuestionsPage';
 import styles from './App.module.scss';
+import AuthenticationPage from './pages/AuthenticationPage';
 
 setupIonicReact();
 
@@ -36,6 +37,8 @@ const App = () => {
   const [seenWelcomePage, setSeenWelcomePage] = useState(false);
   const [confirmAge, setConfirmAge] = useState(false);
   const [seenParentalControlsPage, setSeenParentalControlsPage] = useState(false);
+  const [seenAuthenticationPage, setSeenAuthenticationPage] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [yourAge, setYourAge] = useState(0);
   const [religionTopic, setReligionTopic] = useState(false);
   const [discriminationTopic, setDiscriminationTopic] = useState(false);
@@ -56,11 +59,14 @@ const App = () => {
             setReligionTopic={setReligionTopic}
             setDiscriminationTopic={setDiscriminationTopic}
             setOtherTopic={setOtherTopic} /> 
+        : !seenAuthenticationPage ?
+          <AuthenticationPage setSeenAuthenticationPage={setSeenAuthenticationPage} setIsAuthenticated={setIsAuthenticated}/>
         : <QuestionsPage 
             yourAge={yourAge} 
             religionTopic={religionTopic} 
             discriminationTopic={discriminationTopic}
-            otherTopic={otherTopic} /> }
+            otherTopic={otherTopic} 
+            isAuthenticated={isAuthenticated} /> }
       </div>
     </div>);
   }
