@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { IonButton, IonItem, IonTextarea } from '@ionic/react';
+
+import ProfilePicture from '../components/ProfilePicture';
 import styles from './QuestionsPage.module.scss';
 
 interface QuestionsPageProps {
@@ -25,7 +27,7 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 	const LoggedInText = user && user.isAnonymous ? 
 		"Guest" :  
 		user && user.email ? 
-			"You are logged in as: " + user.email : 
+			user.email : 
 			"You are not authenticated";
 
   const handleSubmit = async (e: any) => {
@@ -55,7 +57,9 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 		<header className={styles.Header}>
 			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{WhyerText}</div>
-			<div>{LoggedInText}</div>
+			<div>
+				<ProfilePicture name={LoggedInText} />
+			</div>
 		</header>
 		<div className={styles.Container}>
 		 <form className={styles.Form} onSubmit={handleSubmit}>
