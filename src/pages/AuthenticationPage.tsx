@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { IonButton, IonInput, IonItem, IonLabel, IonList, IonPage, IonText } from '@ionic/react';
 import styles from './AuthenticationPage.module.scss';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously } from "firebase/auth";
 import app from '../firebase';
 
 const AuthenticationPage = (props: any) => {
@@ -14,7 +14,24 @@ const AuthenticationPage = (props: any) => {
 	const [error, setError] = useState('');
 	const auth = getAuth(app);
 
-	const handleRegistration= async () => {
+	const handleGuest = async () => {
+		signInAnonymously(auth)
+			.then((userCredential) => {
+				// Signed in 
+				const user = userCredential.user;
+				setIsAuthenticated(true);
+				setSeenAuthenticationPage(true)
+				// ...
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				setError(error.message);
+				// ..
+			});
+	};
+
+	const handleRegistration = async () => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				// Signed in 
@@ -74,6 +91,7 @@ const AuthenticationPage = (props: any) => {
 					</IonList>
 					<IonButton onClick={handleLogin}>Login</IonButton>
 					<IonButton onClick={handleRegistration}>Register</IonButton>
+					<IonButton onClick={handleGuest}>Continue as Guest</IonButton>
 				</div>
 			</div>
 		</IonPage>
