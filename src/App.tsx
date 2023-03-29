@@ -44,6 +44,7 @@ const App = () => {
   const [discriminationTopic, setDiscriminationTopic] = useState(false);
   const [otherTopic, setOtherTopic] = useState(false);
   const [otherTopicText, setOtherTopicText] = useState("");
+  const [user, setUser] = useState({});
  
   return (
     <div className={styles.App}>
@@ -60,13 +61,20 @@ const App = () => {
             setDiscriminationTopic={setDiscriminationTopic}
             setOtherTopic={setOtherTopic} /> 
         : !seenAuthenticationPage ?
-          <AuthenticationPage setSeenAuthenticationPage={setSeenAuthenticationPage} setIsAuthenticated={setIsAuthenticated}/>
+          <AuthenticationPage 
+            setSeenAuthenticationPage={setSeenAuthenticationPage} 
+            setIsAuthenticated={setIsAuthenticated}
+            setUser={setUser}
+          />
         : <QuestionsPage 
             yourAge={yourAge} 
             religionTopic={religionTopic} 
             discriminationTopic={discriminationTopic}
             otherTopic={otherTopic} 
-            isAuthenticated={isAuthenticated} /> }
+            isAuthenticated={isAuthenticated} 
+            user={user}
+            /> 
+          }
       </div>
     </div>);
   }

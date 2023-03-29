@@ -3,9 +3,18 @@ import axios from "axios";
 import { IonButton, IonItem, IonTextarea } from '@ionic/react';
 import styles from './QuestionsPage.module.scss';
 
-const QuestionsPage = (props: any) => {
+interface QuestionsPageProps {
+	yourAge: number;
+	religionTopic: boolean;
+	discriminationTopic: boolean;
+	otherTopic: boolean;
+	isAuthenticated: boolean;
+	user: any;
+}
 
-	const { yourAge, religionTopic, discriminationTopic, otherTopic, isAuthenticated } = props;
+const QuestionsPage = (props: QuestionsPageProps) => {
+
+	const { yourAge, religionTopic, discriminationTopic, otherTopic, isAuthenticated, user } = props;
 	const [prompt, setPrompt] = useState("");
 	const [response, setResponse] = useState([{question: "", answer: ""}]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +22,11 @@ const QuestionsPage = (props: any) => {
 	const WhyerTextDefault = "Ask me about what is the sun or what is 2+2, I can help check your homework as well.";
 	const WhyerTextLoading = "Great question! Let me think about it for a while...";
 	const WhyerText = isLoading ? WhyerTextLoading : WhyerTextDefault;
+	const LoggedInText = user && user.isAnonymous ? 
+		"Guest" :  
+		user && user.email ? 
+			"You are logged in as: " + user.email : 
+			"You are not authenticated";
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -41,7 +55,7 @@ const QuestionsPage = (props: any) => {
 		<header className={styles.Header}>
 			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{WhyerText}</div>
-			<div> {isAuthenticated ? "You are authenticated" : "You are not authenticated"}</div>
+			<div>{LoggedInText}</div>
 		</header>
 		<div className={styles.Container}>
 		 <form className={styles.Form} onSubmit={handleSubmit}>

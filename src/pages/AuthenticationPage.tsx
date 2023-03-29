@@ -4,15 +4,43 @@
 import React, { useState } from 'react';
 import { IonButton, IonInput, IonItem, IonLabel, IonList, IonPage, IonText } from '@ionic/react';
 import styles from './AuthenticationPage.module.scss';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously } from "firebase/auth";
+import { 
+	getAuth, 
+	createUserWithEmailAndPassword, 
+	signInWithEmailAndPassword, 
+	signInAnonymously, 
+	onAuthStateChanged 
+} from "firebase/auth";
 import app from '../firebase';
 
-const AuthenticationPage = (props: any) => {
-	const { setIsAuthenticated, setSeenAuthenticationPage } = props;
+interface AuthenticationPageProps {
+	setIsAuthenticated: (value: boolean) => void;
+	setSeenAuthenticationPage: (value: boolean) => void;
+	setUser: (value: any) => void;
+}
+
+
+
+const AuthenticationPage = (props: AuthenticationPageProps) => {
+	const { setIsAuthenticated, setSeenAuthenticationPage, setUser } = props;
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const auth = getAuth(app);
+
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			// User is signed in, see docs for a list of available properties
+			// https://firebase.google.com/docs/reference/js/firebase.User
+			const uid = user.uid;
+			setUser(user);
+			// ...
+		} else {
+			// User is signed out
+			// ...
+			setUser({})
+		}
+	});
 
 	const handleGuest = async () => {
 		signInAnonymously(auth)
