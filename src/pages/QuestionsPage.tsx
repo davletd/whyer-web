@@ -13,18 +13,16 @@ const QuestionsPage = (props: any) => {
 	const WhyerTextDefault = "Ask me about what is the sun or what is 2+2, I can help check your homework as well.";
 	const WhyerTextLoading = "Great question! Let me think about it for a while...";
 	const WhyerText = isLoading ? WhyerTextLoading : WhyerTextDefault;
-	const religionTopicText = religionTopic ? ", religion" : "";
-	const discriminationTopicText = discriminationTopic ? ", race, gender, discrimination" : "";
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 		setIsLoading(true);
-		const updatedPrompt = `I am ${yourAge} year old. Give me friendly but detailed answer to the question: "${prompt}" in the language of question. If question is about sexuality, human reproduction, violence${religionTopicText}${discriminationTopicText} or similar topics in any way, do not give me the answer to the question and tell me instead to ask my parents or teachers to answer to this question."`;
+		const updatedPrompt = `${prompt}`;
 		console.log(prompt);
 		console.log(updatedPrompt);
     axios
-      .post("https://us-central1-whyer-core.cloudfunctions.net/app/chat", { prompt: updatedPrompt  })
-			//.post("http://localhost:5001/whyer-core/us-central1/app/chat", { prompt: updatedPrompt })
+      .post("https://us-central1-whyer-core.cloudfunctions.net/app/chat", { prompt, yourAge, religionTopic, discriminationTopic, otherTopic })
+			//.post("http://localhost:5001/whyer-core/us-central1/app/chat", { prompt, yourAge, religionTopic, discriminationTopic, otherTopic })
       .then((res) => {
         // Update the response state with the server's response
 				response.unshift({question: prompt, answer: res.data})
