@@ -3,13 +3,16 @@
 
 import React, { useState } from 'react';
 import { IonButton, IonInput, IonItem, IonLabel, IonList, IonPage, IonText } from '@ionic/react';
+import { Capacitor } from '@capacitor/core';
 import styles from './AuthenticationPage.module.scss';
 import { 
 	getAuth, 
+	initializeAuth,
 	createUserWithEmailAndPassword, 
 	signInWithEmailAndPassword, 
 	signInAnonymously, 
-	onAuthStateChanged 
+	onAuthStateChanged,
+	indexedDBLocalPersistence
 } from "firebase/auth";
 import app from '../firebase';
 
@@ -19,6 +22,18 @@ interface AuthenticationPageProps {
 	setUser: (value: any) => void;
 }
 
+const whichAuth = () => {
+  let auth;
+  if (Capacitor.isNativePlatform()) {
+    auth = initializeAuth(app, {
+      persistence: indexedDBLocalPersistence,
+    });
+  } else {
+    auth = getAuth(app);
+  }
+  return auth;
+}
+
 
 
 const AuthenticationPage = (props: AuthenticationPageProps) => {
@@ -26,7 +41,7 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
-	const auth = getAuth(app);
+	const auth = whichAuth();
 
 	onAuthStateChanged(auth, (user) => {
 		if (user) {
