@@ -21,7 +21,7 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 	const [response, setResponse] = useState([{question: "", answer: ""}]);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const WhyerTextDefault = "Ask me about what is the sun or what is 2+2, I can help check your homework as well.";
+	const WhyerTextDefault = "Ask me about what is the sun or what is 2+2. I can help check your homework as well.";
 	const WhyerTextLoading = "Great question! Let me think about it for a while...";
 	const WhyerText = isLoading ? WhyerTextLoading : WhyerTextDefault;
 	const LoggedInText = user && user.isAnonymous ? 
@@ -54,13 +54,13 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 
 	return (
 		<div className={styles.Body}>
-		<header className={styles.Header}>
+		<header>
+				<ProfilePicture name={LoggedInText} />
+		</header>
+		<div className={styles.Header}>
 			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
 			<div className={styles.SpeechBubble}>{WhyerText}</div>
-			<div>
-				<ProfilePicture name={LoggedInText} />
-			</div>
-		</header>
+		</div>	
 		<div className={styles.Container}>
 		 <form className={styles.Form} onSubmit={handleSubmit}>
 			<div className={styles.TextFieldInput}>

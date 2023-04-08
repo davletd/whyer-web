@@ -1,18 +1,18 @@
 
-.ProfilePicture {
-	border-radius: 30%;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
-	object-fit: cover;
-}
 
 .ProfilePictureContainer {
-	width: 50%;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+	justify-content: flex-end;
+	margin-right: 10px;
+	display: flex;
 	font-size: calc(8px + 1vmin);
+	align-items: center;
+}
+
+
+.ProfilePicture {
+	border-radius: 30%;
+	margin: 10px;
+	object-fit: cover;
+	height: 30px;
 }
 
