@@ -2,7 +2,6 @@
 
 
 .Container {
-  width: 100%;
 	min-height: 100vh;
   text-align: center;
   display: flex;
@@ -31,7 +30,6 @@
   background-color: #E6E6FA;
   font-size: 20px;
 	margin: 10px;
-  width: 100%;
 	border-radius: 2em;
 }
 
@@ -44,7 +42,6 @@
   background-color: $periwinkle;
   display: flex;
   font-size: calc(10px + 2vmin);
-  width: 100%;
 }
 
 .SpeechBubble {
