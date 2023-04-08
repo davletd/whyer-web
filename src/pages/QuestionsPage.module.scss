@@ -15,7 +15,8 @@
 
 .Form {
   background-color: $antique-white;
-  padding: 20px;
+  padding: 10px;
+	margin: 10px;
 	border-radius: 2em;
 }
 
@@ -29,8 +30,7 @@
   flex: 1;
   background-color: #E6E6FA;
   font-size: 20px;
-	margin-top: 20px;
-  margin-bottom: 10px;
+	margin: 10px;
   width: 100%;
 	border-radius: 2em;
 }
@@ -42,7 +42,6 @@
 
 .Header {
   background-color: $periwinkle;
-  min-height: 20vh;
   display: flex;
   font-size: calc(10px + 2vmin);
   width: 100%;
@@ -53,8 +52,7 @@
 	background: $rosy-brown;
 	border-radius: .4em;
 	padding: 20px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 10px;
 }
 
 .SpeechBubble:after {
