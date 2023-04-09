@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>App.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>B1235EC37BAF78E7DD323653C0F2CDEE47D036A3</string>
+				<key>dateExpires</key>
+				<string>07/04/2024</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>1</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>B1235EC37BAF78E7DD323653C0F2CDEE47D036A3</string>
+						<key>dateExpires</key>
+						<string>07/04/2024</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>Capacitor.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>596VS9K24W</string>
+						<key>name</key>
+						<string>Brandify AS</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>4.7.3</string>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>1</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>B1235EC37BAF78E7DD323653C0F2CDEE47D036A3</string>
+						<key>dateExpires</key>
+						<string>07/04/2024</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>Cordova.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>596VS9K24W</string>
+						<key>name</key>
+						<string>Brandify AS</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>4.7.3</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>596VS9K24W.com.whyer.app</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>596VS9K24W</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>596VS9K24W.com.whyer.app</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>App.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>7a998d5b-577a-46a3-9b12-59ccb8ad6c08</string>
+				<key>dateExpires</key>
+				<string>08/04/2024</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.whyer.app</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>596VS9K24W</string>
+				<key>name</key>
+				<string>Brandify AS</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>
