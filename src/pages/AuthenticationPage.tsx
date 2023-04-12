@@ -1,7 +1,7 @@
 // Authentication Page Component for the application using Firebase Authentication.
 // This component is used to authenticate the user using Firebase Authentication.
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IonButton, IonInput, IonItem, IonLabel, IonList, IonPage, IonText } from '@ionic/react';
 import { Capacitor } from '@capacitor/core';
 import styles from './AuthenticationPage.module.scss';
@@ -20,6 +20,7 @@ interface AuthenticationPageProps {
 	setIsAuthenticated: (value: boolean) => void;
 	setSeenAuthenticationPage: (value: boolean) => void;
 	setUser: (value: any) => void;
+	user: any;
 }
 
 const whichAuth = () => {
@@ -34,28 +35,28 @@ const whichAuth = () => {
   return auth;
 }
 
-
-
 const AuthenticationPage = (props: AuthenticationPageProps) => {
-	const { setIsAuthenticated, setSeenAuthenticationPage, setUser } = props;
+	const { setIsAuthenticated, setSeenAuthenticationPage, setUser, user } = props;
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const auth = whichAuth();
 
-	onAuthStateChanged(auth, (user) => {
-		if (user) {
-			// User is signed in, see docs for a list of available properties
-			// https://firebase.google.com/docs/reference/js/firebase.User
-			const uid = user.uid;
-			setUser(user);
-			// ...
-		} else {
-			// User is signed out
-			// ...
-			setUser({})
-		}
-	});
+	useEffect(() => {
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				// User is signed in, see docs for a list of available properties
+				// https://firebase.google.com/docs/reference/js/firebase.User
+				const uid = user.uid;
+				setUser(user);
+				// ...
+			} else {
+				// User is signed out
+				// ...
+				setUser({})
+			}
+		});
+	}, []);
 
 	const handleGuest = async () => {
 		signInAnonymously(auth)

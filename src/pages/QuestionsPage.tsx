@@ -12,11 +12,12 @@ interface QuestionsPageProps {
 	otherTopic: boolean;
 	isAuthenticated: boolean;
 	user: any;
+	setShouldSeeUserPage: any;
 }
 
 const QuestionsPage = (props: QuestionsPageProps) => {
 
-	const { yourAge, religionTopic, discriminationTopic, otherTopic, isAuthenticated, user } = props;
+	const { yourAge, religionTopic, discriminationTopic, otherTopic, isAuthenticated, user, setShouldSeeUserPage } = props;
 	const [prompt, setPrompt] = useState("");
 	const [response, setResponse] = useState([{question: "", answer: ""}]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +56,7 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 	return (
 		<div className={styles.Body}>
 		<header>
-				<ProfilePicture name={LoggedInText} />
+				<ProfilePicture name={LoggedInText} setShouldSeeUserPage={setShouldSeeUserPage} />
 		</header>
 		<div className={styles.Header}>
 			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />

@@ -5,11 +5,12 @@ import styles from './ProfilePicture.module.scss';
 
 interface ProfilePictureProps {
 	name: string;
+	setShouldSeeUserPage: (shouldSeeUserPage: boolean) => void;
 }
 
-const ProfilePicture = ({ name }: ProfilePictureProps) => {
+const ProfilePicture = ({ name, setShouldSeeUserPage }: ProfilePictureProps) => {
 	return (
-		<div className={styles.ProfilePictureContainer}>
+		<div className={styles.ProfilePictureContainer} onClick={() => setShouldSeeUserPage(true)}>
 			<img className={styles.ProfilePicture} src="profile-placeholder.png" alt="Profile" />
 			{name}
 		</div>

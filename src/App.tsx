@@ -30,6 +30,7 @@ import ParentalControlsPage from './pages/ParentalControlsPage';
 import QuestionsPage from './pages/QuestionsPage';
 import styles from './App.module.scss';
 import AuthenticationPage from './pages/AuthenticationPage';
+import UserPage from './pages/UserPage';
 
 setupIonicReact();
 
@@ -43,37 +44,47 @@ const App = () => {
   const [religionTopic, setReligionTopic] = useState(false);
   const [discriminationTopic, setDiscriminationTopic] = useState(false);
   const [otherTopic, setOtherTopic] = useState(false);
+  const [shouldSeeUserPage, setShouldSeeUserPage] = useState(false);
   const [otherTopicText, setOtherTopicText] = useState("");
   const [user, setUser] = useState({});
  
   return (
     <div className={styles.App}>
       <div className={styles.Content}>
-        {!seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
-        : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
-        : !seenParentalControlsPage? 
-          <ParentalControlsPage 
-            setSeenParentalControlsPage={setSeenParentalControlsPage} 
-            religionTopic={religionTopic}
-            discriminationTopic={discriminationTopic}
-            otherTopic={otherTopic}
-            setReligionTopic={setReligionTopic}
-            setDiscriminationTopic={setDiscriminationTopic}
-            setOtherTopic={setOtherTopic} /> 
-        : !seenAuthenticationPage ?
-          <AuthenticationPage 
+        {shouldSeeUserPage ? 
+          <UserPage 
+            setIsAuthenticated={setIsAuthenticated} 
             setSeenAuthenticationPage={setSeenAuthenticationPage} 
-            setIsAuthenticated={setIsAuthenticated}
             setUser={setUser}
-          />
-        : <QuestionsPage 
-            yourAge={yourAge} 
-            religionTopic={religionTopic} 
-            discriminationTopic={discriminationTopic}
-            otherTopic={otherTopic} 
-            isAuthenticated={isAuthenticated} 
-            user={user}
-            /> 
+            setShouldSeeUserPage={setShouldSeeUserPage}
+          /> 
+          : !seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
+          : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
+          : !seenParentalControlsPage? 
+            <ParentalControlsPage 
+              setSeenParentalControlsPage={setSeenParentalControlsPage} 
+              religionTopic={religionTopic}
+              discriminationTopic={discriminationTopic}
+              otherTopic={otherTopic}
+              setReligionTopic={setReligionTopic}
+              setDiscriminationTopic={setDiscriminationTopic}
+              setOtherTopic={setOtherTopic} /> 
+          : !seenAuthenticationPage ?
+            <AuthenticationPage 
+              setSeenAuthenticationPage={setSeenAuthenticationPage} 
+              setIsAuthenticated={setIsAuthenticated}
+              setUser={setUser}
+              user={user}
+            />
+          : <QuestionsPage 
+              yourAge={yourAge} 
+              religionTopic={religionTopic} 
+              discriminationTopic={discriminationTopic}
+              otherTopic={otherTopic} 
+              isAuthenticated={isAuthenticated} 
+              user={user}
+              setShouldSeeUserPage={setShouldSeeUserPage}
+              /> 
           }
       </div>
     </div>);
