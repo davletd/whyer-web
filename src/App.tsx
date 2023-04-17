@@ -31,6 +31,7 @@ import QuestionsPage from './pages/QuestionsPage';
 import styles from './App.module.scss';
 import AuthenticationPage from './pages/AuthenticationPage';
 import UserPage from './pages/UserPage';
+import MembershipPage from './pages/MembershipPage';
 
 setupIonicReact();
 
@@ -45,18 +46,26 @@ const App = () => {
   const [discriminationTopic, setDiscriminationTopic] = useState(false);
   const [otherTopic, setOtherTopic] = useState(false);
   const [shouldSeeUserPage, setShouldSeeUserPage] = useState(false);
+  const [shouldSeeMembershipPage, setShouldSeeMembershipPage] = useState(false);
   const [otherTopicText, setOtherTopicText] = useState("");
   const [user, setUser] = useState({});
  
   return (
     <div className={styles.App}>
       <div className={styles.Content}>
-        {shouldSeeUserPage ? 
+        {
+          shouldSeeMembershipPage ?
+          <MembershipPage
+            setShouldSeeMembershipPage={setShouldSeeMembershipPage}
+            
+          /> 
+          : shouldSeeUserPage ? 
           <UserPage 
             setIsAuthenticated={setIsAuthenticated} 
             setSeenAuthenticationPage={setSeenAuthenticationPage} 
             setUser={setUser}
             setShouldSeeUserPage={setShouldSeeUserPage}
+            setShouldSeeMembershipPage={setShouldSeeMembershipPage}
           /> 
           : !seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
           : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 

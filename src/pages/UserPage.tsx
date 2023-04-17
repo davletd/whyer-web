@@ -13,10 +13,17 @@ interface IUserPageProps {
 	setSeenAuthenticationPage: (value: boolean) => void;
 	setUser: (value: any) => void;
 	setShouldSeeUserPage: (value: boolean) => void;
+	setShouldSeeMembershipPage: (value: boolean) => void;
 }
 
 const UserPage = (props: IUserPageProps) => {
-	const { setIsAuthenticated, setSeenAuthenticationPage, setUser, setShouldSeeUserPage } = props;
+	const { 
+		setIsAuthenticated, 
+		setSeenAuthenticationPage, 
+		setUser, 
+		setShouldSeeUserPage,
+		setShouldSeeMembershipPage,
+	 } = props;
 	const [showAlert, setShowAlert] = useState(false);
 	const auth = whichAuth();
 
@@ -52,7 +59,8 @@ const UserPage = (props: IUserPageProps) => {
 							<IonInput value={auth.currentUser?.displayName} disabled></IonInput>
 						</IonItem>
 					</IonList>
-					<IonButton expand="block" onClick={() => setShowAlert(true)}>Delete Account</IonButton>
+					<IonButton expand="block" color="secondary" onClick={() => setShouldSeeMembershipPage(true)}>Membership</IonButton>
+					<IonButton expand="block" color="danger" onClick={() => setShowAlert(true)}>Delete Account</IonButton>
 					<IonAlert
 						isOpen={showAlert}
 						onDidDismiss={() => setShowAlert(false)}
