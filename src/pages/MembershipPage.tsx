@@ -2,14 +2,15 @@
 // Users can buy membership using inapp purchases on IOS using cordova-plugin-inapppurchase
 // Path: src/pages/MembershipPage.tsx
 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonIcon, IonLoading, IonAlert, IonList, IonItem, IonLabel, IonInput } from '@ionic/react';
-import { arrowBackOutline } from 'ionicons/icons';
 import React, { useState, useEffect } from 'react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonIcon, IonLoading, IonAlert, IonCard } from '@ionic/react';
+import { arrowBackOutline } from 'ionicons/icons';
+import { isPlatform } from '@ionic/react';
+import { InAppPurchase2 as iap, IAPProduct } from "@ionic-native/in-app-purchase-2";
+
 import styles from './MembershipPage.module.scss';
-import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
-import { getFunctions, httpsCallable } from 'firebase/functions';
-import { Plugins } from '@capacitor/core';
+
+const PRODUCT_ID = 'whyer_base';
 
 interface IMembershipPageProps {
 	// setIsAuthenticated: (value: boolean) => void;
@@ -25,11 +26,68 @@ const MembershipPage = (props: IMembershipPageProps) => {
 	const [showLoading, setShowLoading] = useState(false);
 	const [membershipStatus, setMembershipStatus] = useState('');
 	const [membershipExpiryDate, setMembershipExpiryDate] = useState('');
-	const auth = getAuth();
-	const db = getFirestore();
-	const functions = getFunctions();
-	const { Browser } = Plugins;
 
+	//declare variables 
+	const [productPrice, setPrice] = useState('')
+	const [product, setProduct] = useState([]) as any
+
+	//initiate initInAppPurchase function 
+	useEffect(() => {
+			const init = async () => {
+					await initInAppPurchase();
+			}
+			init();
+
+	}, []);
+
+	//if on an ios or android device, then get product info 
+	const initInAppPurchase = () => {
+			if ((isPlatform('ios')) || (isPlatform('android'))) {
+					iap.verbosity = iap.DEBUG;
+
+					iap.register({
+							id: PRODUCT_ID,
+							alias: "WHYER_MEMBERSHIP",
+							type: iap.PAID_SUBSCRIPTION
+					});
+
+					iap.ready(() => {
+							let product = iap.get('WHYER_MEMBERSHIP');
+							setPrice(product.price)
+							setProduct(product)
+					})
+
+					iap.refresh();
+			}
+	}
+
+	//if user clicks purchase button 
+	const purchaseProduct = () => {
+			if (product.owned) {
+					alert('Product already owned, click restore button instead!')
+			} else {
+					iap.order('WHYER_MEMBERSHIP').then(() => {
+							iap.when(PRODUCT_ID).approved((p: IAPProduct) => {
+									//store product 
+									p.verify();
+									p.finish();
+							});
+					})
+					iap.refresh();
+			}
+	}
+
+	//if user clicks retore or promo code button 
+	const restore = () => {
+					iap.when(PRODUCT_ID).owned((p: IAPProduct) => {
+							if (product.owned) {
+									//store product 
+							} else {
+									alert("You have not purchased this product before.")
+							}
+					});
+					iap.refresh();
+	}
 	// useEffect(() => {
 	// 	onAuthStateChanged(auth, (user: User | null) => {
 	// 		if (user) {
@@ -60,8 +118,8 @@ const MembershipPage = (props: IMembershipPageProps) => {
 
 	const handleCancelMembership = async () => {
 		setShowLoading(true);
-		const cancelMembership = httpsCallable(functions, 'cancelMembership');
-		await cancelMembership();
+		// const cancelMembership = httpsCallable(functions, 'cancelMembership');
+		// await cancelMembership();
 		setShowLoading(false);
 	}
 
@@ -107,6 +165,12 @@ const MembershipPage = (props: IMembershipPageProps) => {
 					{membershipStatus === 'cancelled' && <IonButton onClick={handleRenewMembership}>Renew Membership</IonButton>}
 					{membershipStatus === 'trial' && <IonButton onClick={handleBuyMembership}>Buy Membership</IonButton>}
 				</div>
+				<IonCard className="homeCards">
+					<IonButton onClick={purchaseProduct}>Buy for {productPrice}</IonButton>
+          <IonButton onClick={purchaseProduct}>Buy for {productPrice}</IonButton>
+          <IonButton onClick={restore}>Restore</IonButton>
+          <IonButton onClick={restore}>Promo code</IonButton>
+      	</IonCard>
 			</IonContent>
 		</IonPage>
 	);
