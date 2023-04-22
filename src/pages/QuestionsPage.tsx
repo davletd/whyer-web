@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { IonButton, IonItem, IonTextarea } from '@ionic/react';
 
@@ -31,6 +31,26 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 			user.email : 
 			"You are not authenticated";
 
+	useEffect	(() => {
+		const userSafetySettings = {
+			religionTopic: religionTopic,
+			discriminationTopic: discriminationTopic,
+		};
+
+		axios
+		//.post("https://whyer-core.web.app/user", { userId: user.uid, userName: user.email, userAge: yourAge, userSafetySettings })
+		.post("http://localhost:5001/whyer-core/us-central1/app/user", { userId: user.uid, userName: user.email, userAge: yourAge, userSafetySettings })
+		.then((res) => {
+			// Update the response state with the server's response
+			console.log(res.data)
+			setIsLoading(false);
+		})
+		.catch((err) => {
+			console.error(err);
+			setIsLoading(false);
+		});
+	}, [user]);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 		setIsLoading(true);
@@ -38,7 +58,7 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 		console.log(prompt);
 		console.log(updatedPrompt);
     axios
-      .post("https://us-central1-whyer-core.cloudfunctions.net/app/chat", { prompt, yourAge, religionTopic, discriminationTopic, otherTopic })
+      .post("https://whyer-core.web.app/chat", { prompt, yourAge, religionTopic, discriminationTopic, otherTopic })
 			//.post("http://localhost:5001/whyer-core/us-central1/app/chat", { prompt, yourAge, religionTopic, discriminationTopic, otherTopic })
       .then((res) => {
         // Update the response state with the server's response
