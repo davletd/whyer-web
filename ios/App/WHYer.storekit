@@ -1,0 +1,54 @@
+{
+  "identifier" : "C2021C9B",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6447446703",
+    "_developerTeamID" : "596VS9K24W",
+    "_lastSynchronizedDate" : 703620439.52672398
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21307322",
+      "localizations" : [
+
+      ],
+      "name" : "WHYer base",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6447486653",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Get unlimited answers and questions",
+              "displayName" : "WHYer Unlimited",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "whyer_base",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Whyer Base",
+          "subscriptionGroupID" : "21307322",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
