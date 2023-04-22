@@ -40,6 +40,14 @@ const MembershipPage = (props: IMembershipPageProps) => {
 
 	}, []);
 
+	useEffect(() => {
+		handleEvents();
+	}, []);
+
+	useEffect(() => {
+		hasSubscription();
+	}, []);
+
 	//if on an ios or android device, then get product info 
 	const initInAppPurchase = () => {
 			if ((isPlatform('ios')) || (isPlatform('android'))) {
@@ -79,15 +87,49 @@ const MembershipPage = (props: IMembershipPageProps) => {
 
 	//if user clicks retore or promo code button 
 	const restore = () => {
-					iap.when(PRODUCT_ID).owned((p: IAPProduct) => {
-							if (product.owned) {
-									//store product 
-							} else {
-									alert("You have not purchased this product before.")
-							}
-					});
-					iap.refresh();
+			iap.when(PRODUCT_ID).owned((p: IAPProduct) => {
+					if (product.owned) {
+							//store product 
+					} else {
+							alert("You have not purchased this product before.")
+					}
+			});
+			iap.refresh();
 	}
+
+const handleEvents = () => {
+	iap.when(PRODUCT_ID).cancelled(() => {
+		alert("You have now cancelled subscription.")
+	});
+
+	iap.when(PRODUCT_ID).error(() => {
+		alert("Something when wrong, please try again.")
+	});
+
+	iap.when(PRODUCT_ID).initiated(() => {
+		alert("We are initiating your purchase, please wait.")
+	});
+	
+	iap.when(PRODUCT_ID).approved((product: IAPProduct) => {	
+		alert("Your purchase was succesful.")
+			product.verify();
+	}).verified((product: IAPProduct) => {
+		// Purchase verified
+		setMembershipStatus('Premium');
+		alert("Your purchase was verified.")
+		product.finish();
+	});
+};
+
+const hasSubscription = async () => {
+	iap.when(PRODUCT_ID).updated((product: IAPProduct) => {
+		if (product.owned) {
+			setMembershipStatus('Subscribed');
+		} else {
+			setMembershipStatus('Not subscribed');
+		}
+	});
+}
 	// useEffect(() => {
 	// 	onAuthStateChanged(auth, (user: User | null) => {
 	// 		if (user) {
