@@ -1,0 +1,18 @@
+
+
+.LoginButtonContainer {
+	justify-content: flex-end;
+	margin-right: 10px;
+	display: flex;
+	font-size: calc(8px + 1vmin);
+	align-items: center;
+}
+
+
+.LoginButton {
+	border-radius: 30%;
+	margin: 10px;
+	object-fit: cover;
+	height: 30px;
+}
+
