@@ -17,11 +17,13 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-import { setupIonicReact } from '@ionic/react';
-
 
 import React, { useState } from 'react';
 import axios from "axios";
+import { setupIonicReact, IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonReactRouter, } from '@ionic/react-router';
+import { Route, Redirect } from 'react-router-dom';
+
 
 
 import WelcomePage from './pages/WelcomePage';
@@ -51,52 +53,68 @@ const App = () => {
   const [user, setUser] = useState({});
  
   return (
-    <div className={styles.App}>
-      <div className={styles.Content}>
-        {
-          shouldSeeMembershipPage ?
-          <MembershipPage
-            setShouldSeeMembershipPage={setShouldSeeMembershipPage}
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/welcome" exact={true}>
+            <WelcomePage />
+          </Route>
+          <Route path="/welcome/age" exact={true}>
+            <HowOldAreYouPage />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/welcome" />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+    // <div className={styles.App}>
+    //   <div className={styles.Content}>
+    //     {
+    //       shouldSeeMembershipPage ?
+    //       <MembershipPage
+    //         setShouldSeeMembershipPage={setShouldSeeMembershipPage}
             
-          /> 
-          : shouldSeeUserPage ? 
-          <UserPage 
-            setIsAuthenticated={setIsAuthenticated} 
-            setSeenAuthenticationPage={setSeenAuthenticationPage} 
-            setUser={setUser}
-            setShouldSeeUserPage={setShouldSeeUserPage}
-            setShouldSeeMembershipPage={setShouldSeeMembershipPage}
-          /> 
-          : !seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
-          : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
-          : !seenParentalControlsPage? 
-            <ParentalControlsPage 
-              setSeenParentalControlsPage={setSeenParentalControlsPage} 
-              religionTopic={religionTopic}
-              discriminationTopic={discriminationTopic}
-              otherTopic={otherTopic}
-              setReligionTopic={setReligionTopic}
-              setDiscriminationTopic={setDiscriminationTopic}
-              setOtherTopic={setOtherTopic} /> 
-          : !seenAuthenticationPage ?
-            <AuthenticationPage 
-              setSeenAuthenticationPage={setSeenAuthenticationPage} 
-              setIsAuthenticated={setIsAuthenticated}
-              setUser={setUser}
-              user={user}
-            />
-          : <QuestionsPage 
-              yourAge={yourAge} 
-              religionTopic={religionTopic} 
-              discriminationTopic={discriminationTopic}
-              otherTopic={otherTopic} 
-              isAuthenticated={isAuthenticated} 
-              user={user}
-              setShouldSeeUserPage={setShouldSeeUserPage}
-              /> 
-          }
-      </div>
-    </div>);
+    //       /> 
+    //       : shouldSeeUserPage ? 
+    //       <UserPage 
+    //         setIsAuthenticated={setIsAuthenticated} 
+    //         setSeenAuthenticationPage={setSeenAuthenticationPage} 
+    //         setUser={setUser}
+    //         setShouldSeeUserPage={setShouldSeeUserPage}
+    //         setShouldSeeMembershipPage={setShouldSeeMembershipPage}
+    //       /> 
+    //       : !seenWelcomePage ? <WelcomePage setSeenWelcomePage={setSeenWelcomePage} /> 
+    //       : !confirmAge ? <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} setConfirmAge={setConfirmAge} /> 
+    //       : !seenParentalControlsPage? 
+    //         <ParentalControlsPage 
+    //           setSeenParentalControlsPage={setSeenParentalControlsPage} 
+    //           religionTopic={religionTopic}
+    //           discriminationTopic={discriminationTopic}
+    //           otherTopic={otherTopic}
+    //           setReligionTopic={setReligionTopic}
+    //           setDiscriminationTopic={setDiscriminationTopic}
+    //           setOtherTopic={setOtherTopic} /> 
+    //       : !seenAuthenticationPage ?
+    //         <AuthenticationPage 
+    //           setSeenAuthenticationPage={setSeenAuthenticationPage} 
+    //           setIsAuthenticated={setIsAuthenticated}
+    //           setUser={setUser}
+    //           user={user}
+    //         />
+    //       : <QuestionsPage 
+    //           yourAge={yourAge} 
+    //           religionTopic={religionTopic} 
+    //           discriminationTopic={discriminationTopic}
+    //           otherTopic={otherTopic} 
+    //           isAuthenticated={isAuthenticated} 
+    //           user={user}
+    //           setShouldSeeUserPage={setShouldSeeUserPage}
+    //           /> 
+    //       }
+    //   </div>
+    // </div>);
+    );
   }
 
 export default App;
