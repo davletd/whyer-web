@@ -20,31 +20,33 @@ const ParentalControlsPage = (props: any) => {
 
 
 	return (
-		<div className={styles.Body}>
-			<div className={styles.Image}><img src="Nesh.png" alt="Welcome to WHYer" /></div>
-			<div className={styles.SpeechBubble}>{welcomeText}</div>
-			<IonList>
-				<IonItem>
-					<IonLabel>Sexuality</IonLabel>
-					<IonToggle slot="end" checked={true} disabled={true}></IonToggle>
-				</IonItem>
-				<IonItem>
-					<IonLabel>Violence</IonLabel>
-					<IonToggle slot="end" checked={true} disabled={true}></IonToggle>
-				</IonItem>
-				<IonItem>
-					<IonLabel>Religion and spirituality</IonLabel>
-					<IonToggle slot="end" checked={religionTopic} onIonChange={(e) => setReligionTopic(e.detail.checked)}></IonToggle>
-				</IonItem>
-				<IonItem>
-					<IonLabel>Race, Gender and discrimination</IonLabel>
-					<IonToggle slot="end" checked={discriminationTopic} onIonChange={(e) => setDiscriminationTopic(e.detail.checked)}></IonToggle>
-				</IonItem>
-			</IonList>
-			<br></br>
-			<IonButton onClick={() => setSeenParentalControlsPage(true)}>Continue</IonButton>
-			<br></br>
-		</div>
+		<IonPage>
+			<div className={styles.Body}>
+				<div className={styles.Image}><img src="/Nesh.png" alt="Welcome to WHYer" /></div>
+				<div className={styles.SpeechBubble}>{welcomeText}</div>
+				<IonList>
+					<IonItem>
+						<IonLabel>Sexuality</IonLabel>
+						<IonToggle slot="end" checked={true} disabled={true}></IonToggle>
+					</IonItem>
+					<IonItem>
+						<IonLabel>Violence</IonLabel>
+						<IonToggle slot="end" checked={true} disabled={true}></IonToggle>
+					</IonItem>
+					<IonItem>
+						<IonLabel>Religion and spirituality</IonLabel>
+						<IonToggle slot="end" checked={religionTopic} onIonChange={(e) => setReligionTopic(e.detail.checked)}></IonToggle>
+					</IonItem>
+					<IonItem>
+						<IonLabel>Race, Gender and discrimination</IonLabel>
+						<IonToggle slot="end" checked={discriminationTopic} onIonChange={(e) => setDiscriminationTopic(e.detail.checked)}></IonToggle>
+					</IonItem>
+				</IonList>
+				<br></br>
+				<IonButton routerLink={'/questions'}>Continue</IonButton>
+				<br></br>
+			</div>
+		</IonPage>
 	)
 }
 export default ParentalControlsPage;

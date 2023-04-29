@@ -7,7 +7,7 @@ const HowOldAreYouPage = (props: any) => {
 	const welcomeText = `My answers and vocabulary are personalized to the age of your child.
 	And just as they grow, I will give more detailed and scientific answers to stay at their level`;
   
-	const { yourAge, setYourAge, setConfirmAge } = props;
+	const { yourAge, setYourAge } = props;
 
 	return (
 		<IonPage>
@@ -34,7 +34,7 @@ const HowOldAreYouPage = (props: any) => {
 					</IonItem>
 				</IonList>
 				<br></br>
-				<IonButton disabled={!yourAge} className={styles.Button} onClick={() => setConfirmAge(true)}>Continue</IonButton>
+				<IonButton disabled={!yourAge} className={styles.Button} routerLink={'/welcome/controls'}>Continue</IonButton>
 			</div>
 		</IonPage>
 	)

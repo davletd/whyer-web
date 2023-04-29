@@ -38,7 +38,6 @@ import MembershipPage from './pages/MembershipPage';
 setupIonicReact();
 
 const App = () => {
-  const [seenWelcomePage, setSeenWelcomePage] = useState(false);
   const [confirmAge, setConfirmAge] = useState(false);
   const [seenParentalControlsPage, setSeenParentalControlsPage] = useState(false);
   const [seenAuthenticationPage, setSeenAuthenticationPage] = useState(false);
@@ -60,7 +59,23 @@ const App = () => {
             <WelcomePage />
           </Route>
           <Route path="/welcome/age" exact={true}>
-            <HowOldAreYouPage />
+            <HowOldAreYouPage yourAge={yourAge} setYourAge={setYourAge} />
+          </Route>
+          <Route path="/welcome/controls" exact={true}>
+            <ParentalControlsPage />
+          </Route>
+          <Route path="/questions" exact={true}>
+            <QuestionsPage 
+              yourAge={yourAge} 
+              religionTopic={religionTopic} 
+              discriminationTopic={discriminationTopic}
+              otherTopic={otherTopic} 
+              isAuthenticated={isAuthenticated} 
+              user={user}
+            /> 
+          <Route path="/account" exact={true}>
+            <UserPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+          </Route>
           </Route>
           <Route exact path="/">
             <Redirect to="/welcome" />
