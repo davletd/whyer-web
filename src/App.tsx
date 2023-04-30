@@ -24,8 +24,6 @@ import { setupIonicReact, IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter, } from '@ionic/react-router';
 import { Route, Redirect } from 'react-router-dom';
 
-
-
 import WelcomePage from './pages/WelcomePage';
 import HowOldAreYouPage from './pages/HowOldAreYouPage';
 import ParentalControlsPage from './pages/ParentalControlsPage';
@@ -50,6 +48,7 @@ const App = () => {
   const [shouldSeeMembershipPage, setShouldSeeMembershipPage] = useState(false);
   const [otherTopicText, setOtherTopicText] = useState("");
   const [user, setUser] = useState({});
+  
  
   return (
     <IonApp>
@@ -73,9 +72,20 @@ const App = () => {
               isAuthenticated={isAuthenticated} 
               user={user}
             /> 
+          </Route>
+          <Route path="/login" exact={true}>
+            <AuthenticationPage 
+              setSeenAuthenticationPage={setSeenAuthenticationPage} 
+              setIsAuthenticated={setIsAuthenticated}
+              setUser={setUser}
+              user={user}
+            />
+          </Route>
           <Route path="/account" exact={true}>
             <UserPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
           </Route>
+          <Route path="/account/membership" exact={true}>
+            <MembershipPage />
           </Route>
           <Route exact path="/">
             <Redirect to="/welcome" />

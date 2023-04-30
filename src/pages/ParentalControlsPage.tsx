@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { IonButton,  IonList, IonItem, IonLabel, IonToggle, IonPage } from '@ionic/react';
+import { useHistory } from "react-router-dom";
 import styles from './ParentalControlsPage.module.scss';
 
 const ParentalControlsPage = (props: any) => {
@@ -10,7 +11,6 @@ const ParentalControlsPage = (props: any) => {
 	consult with you if they want to talk about some of the topics below`;
   
 	const { 
-		setSeenParentalControlsPage, 
 		religionTopic, 
 		discriminationTopic, 
 		otherTopic, 
@@ -18,6 +18,7 @@ const ParentalControlsPage = (props: any) => {
 		setDiscriminationTopic, 
 		setOtherTopic } = props;
 
+	let history = useHistory();
 
 	return (
 		<IonPage>
@@ -43,7 +44,7 @@ const ParentalControlsPage = (props: any) => {
 					</IonItem>
 				</IonList>
 				<br></br>
-				<IonButton routerLink={'/questions'}>Continue</IonButton>
+				<IonButton onClick={() => history.push('/login')}>Continue</IonButton>
 				<br></br>
 			</div>
 		</IonPage>

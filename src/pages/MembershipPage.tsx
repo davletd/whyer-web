@@ -7,21 +7,14 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonIco
 import { arrowBackOutline } from 'ionicons/icons';
 import { isPlatform } from '@ionic/react';
 import { InAppPurchase2 as iap, IAPProduct } from "@ionic-native/in-app-purchase-2";
+import { useHistory } from "react-router-dom";
 
 import styles from './MembershipPage.module.scss';
 
 const PRODUCT_ID = 'whyer_base';
 
-interface IMembershipPageProps {
-	// setIsAuthenticated: (value: boolean) => void;
-	// setSeenAuthenticationPage: (value: boolean) => void;
-	// setUser: (value: any) => void;
-	// setShouldSeeUserPage: (value: boolean) => void;
-	setShouldSeeMembershipPage: (value: boolean) => void;
-}
 
-const MembershipPage = (props: IMembershipPageProps) => {
-	const { setShouldSeeMembershipPage } = props;
+const MembershipPage = () => {
 	const [showAlert, setShowAlert] = useState(false);
 	const [showLoading, setShowLoading] = useState(false);
 	const [membershipStatus, setMembershipStatus] = useState('');
@@ -29,7 +22,8 @@ const MembershipPage = (props: IMembershipPageProps) => {
 
 	//declare variables 
 	const [productPrice, setPrice] = useState('')
-	const [product, setProduct] = useState([]) as any
+	const [product, setProduct] = useState([]) as any;
+	let history = useHistory();
 
 	//initiate initInAppPurchase function 
 	useEffect(() => {
@@ -178,7 +172,7 @@ const hasSubscription = async () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonButton slot="start" onClick={() => setShouldSeeMembershipPage(false)}>
+					<IonButton slot="start" onClick={() => history.goBack()}>
 						<IonIcon icon={arrowBackOutline} />
 					</IonButton>
 					<IonTitle>Membership</IonTitle>

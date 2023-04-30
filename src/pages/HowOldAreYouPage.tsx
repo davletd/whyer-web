@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { IonPage, IonButton,  IonList, IonItem, IonSelect, IonSelectOption } from '@ionic/react';
 import styles from './HowOldAreYouPage.module.scss';
+import { useHistory } from "react-router-dom";
 
 const HowOldAreYouPage = (props: any) => {
 
@@ -8,6 +9,7 @@ const HowOldAreYouPage = (props: any) => {
 	And just as they grow, I will give more detailed and scientific answers to stay at their level`;
   
 	const { yourAge, setYourAge } = props;
+	let history = useHistory();
 
 	return (
 		<IonPage>
@@ -34,7 +36,7 @@ const HowOldAreYouPage = (props: any) => {
 					</IonItem>
 				</IonList>
 				<br></br>
-				<IonButton disabled={!yourAge} className={styles.Button} routerLink={'/welcome/controls'}>Continue</IonButton>
+				<IonButton disabled={!yourAge} className={styles.Button} onClick={() => history.push('/welcome/controls')}>Continue</IonButton>
 			</div>
 		</IonPage>
 	)

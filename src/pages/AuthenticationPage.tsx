@@ -14,6 +14,8 @@ import {
 	onAuthStateChanged,
 	indexedDBLocalPersistence
 } from "firebase/auth";
+import { useHistory } from "react-router-dom";
+
 import app from '../firebase';
 
 interface AuthenticationPageProps {
@@ -41,12 +43,13 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const auth = whichAuth();
+	let history = useHistory();
 
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {
 				// User is signed in, see docs for a list of available properties
-				// https://firebase.google.com/docs/reference/js/firebase.User
+				// https://firebase.pushogle.com/docs/reference/js/firebase.User
 				const uid = user.uid;
 				setUser(user);
 				console.log('user', user);
@@ -65,7 +68,8 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 				// Signed in 
 				const user = userCredential.user;
 				setIsAuthenticated(true);
-				setSeenAuthenticationPage(true)
+				setSeenAuthenticationPage(true);
+				history.push('/questions');
 				// ...
 			})
 			.catch((error) => {
@@ -82,7 +86,8 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 				// Signed in 
 				const user = userCredential.user;
 				setIsAuthenticated(true);
-				setSeenAuthenticationPage(true)
+				setSeenAuthenticationPage(true);
+				history.push('/questions');
 				// ...
 			})
 			.catch((error) => {
@@ -100,6 +105,7 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 				const user = userCredential.user;
 				setIsAuthenticated(true);
 				setSeenAuthenticationPage(true);
+				history.push('/questions');
 				// ...
 			})
 			.catch((error) => {

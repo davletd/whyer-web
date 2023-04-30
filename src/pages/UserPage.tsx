@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import {  } from 'firebase/auth';
 import styles from './UserPage.module.scss';
 import whichAuth from '../utils/getAuth';
+import { useHistory } from "react-router-dom";
 
 interface IUserPageProps {
 	setIsAuthenticated: (value: boolean) => void;
@@ -20,6 +21,7 @@ const UserPage = (props: IUserPageProps) => {
 	 } = props;
 	const [showAlert, setShowAlert] = useState(false);
 	const auth = whichAuth();
+	let history = useHistory();
 
 	const handleDelete = async () => {
 		// await auth.signInWithEmailAndPassword(email, password);
@@ -33,7 +35,7 @@ const UserPage = (props: IUserPageProps) => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonButton fill="clear" slot="start" routerLink={'/questions'}>
+					<IonButton fill="clear" slot="start" onClick={() => history.goBack()}>
 						<IonIcon icon={arrowBackOutline} size="large"></IonIcon>
 					</IonButton>
 					<IonTitle>User</IonTitle>
@@ -51,7 +53,7 @@ const UserPage = (props: IUserPageProps) => {
 							<IonInput value={auth.currentUser?.displayName} disabled></IonInput>
 						</IonItem>
 					</IonList>
-					<IonButton expand="block" color="secondary" routerLink={'/account/membership'}>Membership</IonButton>
+					<IonButton expand="block" color="secondary" onClick={() => history.push('/account/membership')}>Membership</IonButton>
 					<IonButton expand="block" color="danger" onClick={() => setShowAlert(true)}>Delete Account</IonButton>
 					<IonAlert
 						isOpen={showAlert}
