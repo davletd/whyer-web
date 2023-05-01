@@ -54,6 +54,8 @@ const App = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
+          <div className={styles.App}>
+          <div className={styles.Content}>
           <Route path="/welcome" exact={true}>
             <WelcomePage />
           </Route>
@@ -90,7 +92,10 @@ const App = () => {
           <Route exact path="/">
             <Redirect to="/welcome" />
           </Route>
+</div>
+          </div>
         </IonRouterOutlet>
+
       </IonReactRouter>
     </IonApp>
     // <div className={styles.App}>

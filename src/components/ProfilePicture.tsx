@@ -2,7 +2,6 @@
 
 import React from 'react';
 import styles from './ProfilePicture.module.scss';
-import { IonItem } from '@ionic/react';
 import { useHistory } from "react-router-dom";
 
 interface ProfilePictureProps {
@@ -13,12 +12,10 @@ const ProfilePicture = ({ name }: ProfilePictureProps) => {
 	let history = useHistory();
 
 	return (
-		<IonItem onClick={() => history.push('/account')}>
-			<div className={styles.ProfilePictureContainer}>
-				<img className={styles.ProfilePicture} src="profile-placeholder.png" alt="Profile" />
-				{name}
-			</div>
-		</IonItem>
+		<div className={styles.ProfilePictureContainer} onClick={() => history.push('/account')}>
+			<img className={styles.ProfilePicture} src="profile-placeholder.png" alt="Profile" />
+			{name}
+		</div>
 	);
 };
 

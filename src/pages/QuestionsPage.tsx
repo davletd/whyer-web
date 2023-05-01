@@ -74,12 +74,12 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 
 	return (
 		<div className={styles.Body}>
-		<header>
-				<ProfilePicture name={LoggedInText} />
-		</header>
 		<div className={styles.Header}>
-			<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
-			<div className={styles.SpeechBubble}>{WhyerText}</div>
+			<ProfilePicture name={LoggedInText} />
+			<div className={styles.Welcome}>
+				<img className={styles.ImageHeader} src="Nesh.png" alt="Welcome to WHYer" />
+				<div className={styles.SpeechBubble}>{WhyerText}</div>
+			</div>
 		</div>	
 		<div className={styles.Container}>
 		 <form className={styles.Form} onSubmit={handleSubmit}>
