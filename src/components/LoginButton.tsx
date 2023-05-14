@@ -2,15 +2,24 @@
 
 import React from 'react';
 import styles from './LoginButton.module.scss';
+import { IonButton } from '@ionic/react';
+import { useHistory } from "react-router-dom";
 
 interface LoginButtonProps {
 
 }
 
 const LoginButton = ({ }: LoginButtonProps) => {
+	let history = useHistory();
+
 	return (
-		<div className={styles.LoginButtonContainer} onClick={setTimeout=> (100)}>
-			Login
+		<div className={styles.LoginButtonContainer}>
+			<IonButton 
+				color={"secondary"} 
+				className={styles.LoginButton}
+				onClick={() => history.push('/login')}>
+					Login
+			</IonButton>
 		</div>
 	);
 };

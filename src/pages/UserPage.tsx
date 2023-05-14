@@ -1,13 +1,14 @@
 // User page with information such as email, name and button to delete account
 // Path: src/pages/UserPage.tsx
 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonInput, IonList, IonAlert, IonIcon } from '@ionic/react';
-import { arrowBackOutline } from 'ionicons/icons';
+import { IonContent, IonPage, IonButton, IonItem, IonLabel, IonInput, IonList, IonAlert } from '@ionic/react';
 import React, { useState } from 'react';
 import {  } from 'firebase/auth';
 import styles from './UserPage.module.scss';
 import whichAuth from '../utils/getAuth';
 import { useHistory } from "react-router-dom";
+
+import SimpleHeader from '../components/SimpleHeader';
 
 interface IUserPageProps {
 	setIsAuthenticated: (value: boolean) => void;
@@ -33,14 +34,7 @@ const UserPage = (props: IUserPageProps) => {
 
 	return (
 		<IonPage>
-			<IonHeader>
-				<IonToolbar>
-					<IonButton fill="clear" slot="start" onClick={() => history.goBack()}>
-						<IonIcon icon={arrowBackOutline} size="large"></IonIcon>
-					</IonButton>
-					<IonTitle>User</IonTitle>
-				</IonToolbar>
-			</IonHeader>
+			<SimpleHeader title="User" />
 			<IonContent fullscreen>
 				<div className={styles.Body}>
 					<IonList>
