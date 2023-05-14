@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { IonPage, IonButton,  IonList, IonItem, IonSelect, IonSelectOption } from '@ionic/react';
 import styles from './HowOldAreYouPage.module.scss';
 import { useHistory } from "react-router-dom";
+import SimpleHeader from '../components/SimpleHeader';
 
 const HowOldAreYouPage = (props: any) => {
 
@@ -13,6 +14,7 @@ const HowOldAreYouPage = (props: any) => {
 
 	return (
 		<IonPage>
+			<SimpleHeader hideBackButton={true}/>
 			<div className={styles.Body}>
 				<div className={styles.Image}><img src="/Nesh.png" alt="Welcome to WHYer" /></div>
 				<div className={styles.SpeechBubble}>{welcomeText}</div>

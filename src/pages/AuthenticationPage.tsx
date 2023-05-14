@@ -16,6 +16,8 @@ import {
 } from "firebase/auth";
 import { useHistory } from "react-router-dom";
 
+import SimpleHeader from '../components/SimpleHeader';
+
 import app from '../firebase';
 
 interface AuthenticationPageProps {
@@ -113,6 +115,7 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 
 	return (
 		<IonPage>
+			<SimpleHeader title="Login or Create New Profile"/>
 			<div className={styles.Body}>
 				<div className={styles.Image}>
 					<img src="Nesh.png" alt="Welcome to WHYer" />

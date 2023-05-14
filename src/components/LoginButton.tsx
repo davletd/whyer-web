@@ -16,7 +16,7 @@ const LoginButton = ({ }: LoginButtonProps) => {
 		<div className={styles.LoginButtonContainer}>
 			<IonButton 
 				color={"secondary"} 
-				className={styles.LoginButton}
+				className={styles.LoginButtonContainer}
 				onClick={() => history.push('/login')}>
 					Login
 			</IonButton>

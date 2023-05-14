@@ -22,6 +22,19 @@ img {
 
 :root {
   --ion-color-primary: #7EBFA0ff;
+	--ion-color-primary-rgb: 191,160,255;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0,0,0;
+	--ion-color-primary-shade: #a88de0;
+	--ion-color-primary-tint: #c5aaff;
+
+	--ion-color-secondary: #CEA9A2ff;
+	--ion-color-secondary-rgb: 169,162,255;
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-secondary-contrast-rgb: 0,0,0;
+	--ion-color-secondary-shade: #958fe0;
+	--ion-color-secondary-tint: #b2abff;
+
 	--ion-color-new: #69bb7b;
 	--ion-color-new-rgb: 105,187,123;
 	--ion-color-new-contrast: #000000;

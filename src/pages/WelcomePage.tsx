@@ -3,6 +3,7 @@ import { IonPage, IonButton, IonHeader, IonContent } from '@ionic/react';
 import styles from './WelcomePage.module.scss';
 import LoginButton from '../components/LoginButton';
 import { useHistory } from "react-router-dom";
+import SimpleHeader from '../components/SimpleHeader';
 
 const WelcomePage = () => {
 	const welcomeText = `Welcome heartly to WHYer! 
@@ -13,9 +14,7 @@ const WelcomePage = () => {
 
 	return (
 		<IonPage>
-				<IonHeader>
-					<LoginButton />
-				</IonHeader>
+				<SimpleHeader hideBackButton={true}/>
 				<div className={styles.Body}>
 				<IonContent className={styles.Body}>
 					<div className={styles.Image}><img src="/Nesh.png" alt="Welcome to WHYer" /></div>

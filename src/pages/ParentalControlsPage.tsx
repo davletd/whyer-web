@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { IonButton,  IonList, IonItem, IonLabel, IonToggle, IonPage } from '@ionic/react';
+import { IonButton,  IonList, IonItem, IonLabel, IonToggle, IonPage, IonContent } from '@ionic/react';
 import { useHistory } from "react-router-dom";
+import SimpleHeader from '../components/SimpleHeader';
 import styles from './ParentalControlsPage.module.scss';
 
 const ParentalControlsPage = (props: any) => {
@@ -22,6 +23,8 @@ const ParentalControlsPage = (props: any) => {
 
 	return (
 		<IonPage>
+			<SimpleHeader/>
+			<IonContent >
 			<div className={styles.Body}>
 				<div className={styles.Image}><img src="/Nesh.png" alt="Welcome to WHYer" /></div>
 				<div className={styles.SpeechBubble}>{welcomeText}</div>
@@ -47,6 +50,7 @@ const ParentalControlsPage = (props: any) => {
 				<IonButton onClick={() => history.push('/login')}>Continue</IonButton>
 				<br></br>
 			</div>
+			</IonContent>
 		</IonPage>
 	)
 }
