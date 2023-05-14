@@ -20,7 +20,6 @@ import app from '../firebase';
 
 interface AuthenticationPageProps {
 	setIsAuthenticated: (value: boolean) => void;
-	setSeenAuthenticationPage: (value: boolean) => void;
 	setUser: (value: any) => void;
 	user: any;
 }
@@ -38,7 +37,7 @@ const whichAuth = () => {
 }
 
 const AuthenticationPage = (props: AuthenticationPageProps) => {
-	const { setIsAuthenticated, setSeenAuthenticationPage, setUser, user } = props;
+	const { setIsAuthenticated, setUser, user } = props;
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
@@ -68,7 +67,6 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 				// Signed in 
 				const user = userCredential.user;
 				setIsAuthenticated(true);
-				setSeenAuthenticationPage(true);
 				history.push('/questions');
 				// ...
 			})
@@ -86,7 +84,6 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 				// Signed in 
 				const user = userCredential.user;
 				setIsAuthenticated(true);
-				setSeenAuthenticationPage(true);
 				history.push('/questions');
 				// ...
 			})
@@ -104,7 +101,6 @@ const AuthenticationPage = (props: AuthenticationPageProps) => {
 				// Signed in 
 				const user = userCredential.user;
 				setIsAuthenticated(true);
-				setSeenAuthenticationPage(true);
 				history.push('/questions');
 				// ...
 			})
