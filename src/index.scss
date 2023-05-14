@@ -29,9 +29,13 @@ img {
 	--ion-color-new-shade: #5ca56c;
 	--ion-color-new-tint: #78c288;
 	--ion-border-radius: 2em;
+	--ion-background-color: $periwinkle;
+	--ion-item-background: #ffffff;
+	--ion-overlay-background-color: #ffffff;
 }
 
 .ion-color-new {
+
 	--ion-color-base: var(--ion-color-new);
 	--ion-color-base-rgb: var(--ion-color-new-rgb);
 	--ion-color-contrast: var(--ion-color-new-contrast);
