@@ -37,8 +37,8 @@ const QuestionsPage = (props: QuestionsPageProps) => {
 		};
 
 		axios
-		//.post("https://whyer-core.web.app/user", { userId: user.uid, userName: user.email, userAge: yourAge, userSafetySettings })
-		.post("http://localhost:5001/whyer-core/us-central1/app/user", { userId: user.uid, userName: user.email, userAge: yourAge, userSafetySettings })
+		.post("https://whyer-core.web.app/user", { userId: user.uid, userName: user.email, userAge: yourAge, userSafetySettings })
+		//.post("http://localhost:5001/whyer-core/us-central1/app/user", { userId: user.uid, userName: user.email, userAge: yourAge, userSafetySettings })
 		.then((res) => {
 			// Update the response state with the server's response
 			console.log(res.data)

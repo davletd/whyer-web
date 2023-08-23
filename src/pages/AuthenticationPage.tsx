@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import { IonButton, IonInput, IonItem, IonLabel, IonList, IonPage, IonText } from '@ionic/react';
 import { Capacitor } from '@capacitor/core';
-import styles from './AuthenticationPage.module.scss';
 import { 
 	getAuth, 
 	initializeAuth,
@@ -19,6 +18,8 @@ import { useHistory } from "react-router-dom";
 import SimpleHeader from '../components/SimpleHeader';
 
 import app from '../firebase';
+
+import styles from './AuthenticationPage.module.scss';
 
 interface AuthenticationPageProps {
 	setIsAuthenticated: (value: boolean) => void;
